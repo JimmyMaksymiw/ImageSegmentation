@@ -23,6 +23,10 @@ public class Pixel {
         this.b = b;
     }
 
+    public Pixel() {
+        this(255, 0, 0, 0);
+    }
+
     public int getA() {
         return a;
     }
@@ -48,6 +52,20 @@ public class Pixel {
         argb += b & 0xFF;
 
         return argb;
+    }
+
+    public void setARGB(int argb) {
+        this.a = (argb >> 24) & 0xFF;
+        this.r = (argb >> 16) & 0xFF;
+        this.g = (argb >> 8) & 0xFF;
+        this.b = argb & 0xFF;
+    }
+
+    public void setARGB(int a, int r, int g, int b) {
+        this.a = a;
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 
     @Override

@@ -12,8 +12,8 @@ import java.io.IOException;
 public class Image {
     private Pixel[][] pixels;
 
-    public Image (String filePath) {
-        BufferedImage bufferedImage = null;
+    public Image(String filePath) {
+        BufferedImage bufferedImage;
         try {
             bufferedImage = ImageIO.read(new File(filePath));
             pixels = newImage(bufferedImage);
@@ -22,12 +22,38 @@ public class Image {
         }
     }
 
-    public static void saveImage(BufferedImage image/*, String fileName */) {
-        // TODO: parameter imageformat ?
-        // TODO: selected file path ?
-        // TODO: selected filename ?
+    public Image(Pixel[][] pixels) {
+        this.pixels = pixels;
+    }
+
+    public Image(int width, int height) {
+        pixels = new Pixel[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                pixels[i][j] = new Pixel();
+            }
+        }
+    }
+
+    public int getWidth() {
+        return pixels[0].length;
+    }
+
+    public int getHeight() {
+        return pixels.length;
+    }
+
+    public Pixel getPixel(int x, int y) {
+        if (!(x < 0 || x >= getWidth() || y < 0 || y >= getHeight())) {
+            return pixels[y][x];
+        }
+        return null;
+    }
+
+    public void saveImage(String fileName) {
         try {
-            ImageIO.write(image, "PNG", new File("resources/test.png"));
+            BufferedImage bufferedImage = createBufferedImage();
+            ImageIO.write(bufferedImage, "PNG", new File(fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,15 +101,15 @@ public class Image {
         return img;
     }
 
-    public BufferedImage createImageFromIntArray(Pixel[][] image) {
-        int height = image.length;
-        int width = image[0].length;
+    public BufferedImage createBufferedImage() {
+        int height = pixels.length;
+        int width = pixels[0].length;
 
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                bufferedImage.setRGB(x, y, image[y][x].getARGB());
+                bufferedImage.setRGB(x, y, pixels[y][x].getARGB());
             }
         }
         return bufferedImage;
@@ -91,11 +117,5 @@ public class Image {
 
     public Pixel[][] getPixels() {
         return pixels;
-    }
-
-    public static void main(String[] args) {
-        Image image = new Image("resources/orange_flower.jpg");
-        BufferedImage bufferedImage = image.createImageFromIntArray(image.getPixels());
-        image.saveImage(bufferedImage);
     }
 }
