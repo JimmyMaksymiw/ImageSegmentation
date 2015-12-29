@@ -1,4 +1,4 @@
-package test;
+package operations;
 
 import java.awt.Color;
 import java.util.Random;
