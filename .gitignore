@@ -1,3 +1,7 @@
+# local image maps #
+resources/
+testResults/
+
 # Package Files #
 *.jar
 *.war
