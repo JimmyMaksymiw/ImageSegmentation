@@ -35,11 +35,11 @@ public class Controller {
         if (fileChooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) return;
 
         String filePath = fileChooser.getSelectedFile().toString();
-        BufferedImage bufferedImage = Image.loadImage(filePath);
-        ImageIcon img = new ImageIcon(bufferedImage);
+//        BufferedImage bufferedImage = Image.loadImage(filePath);
+//        ImageIcon img = new ImageIcon(bufferedImage);
         // TODO: better scaling
-        img = new ImageIcon(img.getImage().getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH));
-        gui.setSelectedImage(img);
+//        img = new ImageIcon(img.getImage().getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH));
+//        gui.setSelectedImage(img);
     }
 
     public void saveImage() {

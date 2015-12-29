@@ -10,15 +10,16 @@ import java.io.IOException;
  * @author Jimmy Maksymiw
  */
 public class Image {
+    private Pixel[][] pixels;
 
-    public static BufferedImage loadImage(String filePath) {
+    public Image (String filePath) {
         BufferedImage bufferedImage = null;
         try {
             bufferedImage = ImageIO.read(new File(filePath));
+            pixels = newImage(bufferedImage);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return bufferedImage;
     }
 
     public static void saveImage(BufferedImage image/*, String fileName */) {
@@ -32,14 +33,15 @@ public class Image {
         }
     }
 
-    private static int[][] convertTo2DArray(BufferedImage image) {
+    private Pixel[][] newImage(BufferedImage image) {
         final byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
         final int width = image.getWidth();
         final int height = image.getHeight();
         final boolean hasAlphaChannel = image.getAlphaRaster() != null;
+        
+        Pixel[][] img = new Pixel[height][width];
 
-        int[][] result = new int[height][width];
-        if (hasAlphaChannel) {
+        if (hasAlphaChannel){
             final int pixelLength = 4;
             for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
                 int argb = 0;
@@ -47,7 +49,7 @@ public class Image {
                 argb += ((int) pixels[pixel + 1] & 0xff); // blue
                 argb += (((int) pixels[pixel + 2] & 0xff) << 8); // green
                 argb += (((int) pixels[pixel + 3] & 0xff) << 16); // red
-                result[row][col] = argb;
+                img[row][col] = new Pixel(argb);
                 col++;
                 if (col == width) {
                     col = 0;
@@ -62,7 +64,7 @@ public class Image {
                 argb += ((int) pixels[pixel] & 0xff); // blue
                 argb += (((int) pixels[pixel + 1] & 0xff) << 8); // green
                 argb += (((int) pixels[pixel + 2] & 0xff) << 16); // red
-                result[row][col] = argb;
+                img[row][col] = new Pixel(argb);
                 col++;
                 if (col == width) {
                     col = 0;
@@ -70,10 +72,10 @@ public class Image {
                 }
             }
         }
-        return result;
+        return img;
     }
 
-    public static BufferedImage createImageFromIntArray(int[][] image) {
+    public BufferedImage createImageFromIntArray(Pixel[][] image) {
         int height = image.length;
         int width = image[0].length;
 
@@ -81,19 +83,19 @@ public class Image {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                bufferedImage.setRGB(x, y, image[y][x]);
+                bufferedImage.setRGB(x, y, image[y][x].getARGB());
             }
         }
         return bufferedImage;
     }
 
+    public Pixel[][] getPixels() {
+        return pixels;
+    }
+
     public static void main(String[] args) {
-
-        BufferedImage img = Image.loadImage("resources/orange_flower.jpg");
-
-        int[][] i = Image.convertTo2DArray(img);
-
-        BufferedImage tmp = createImageFromIntArray(i);
-        saveImage(tmp);
+        Image image = new Image("resources/orange_flower.jpg");
+        BufferedImage bufferedImage = image.createImageFromIntArray(image.getPixels());
+        image.saveImage(bufferedImage);
     }
 }
