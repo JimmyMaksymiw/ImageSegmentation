@@ -24,6 +24,8 @@ public class Convolution {
                 sum += i;
             }
         }
+        sum = sum < 1 ? 1 : sum;
+
         width = image.getWidth();
         height = image.getHeight();
         System.out.println("Width: " + width + ", Height: " + height);
