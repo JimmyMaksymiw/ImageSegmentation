@@ -8,6 +8,7 @@ public class Pixel {
     private int r;
     private int g;
     private int b;
+    private boolean visisted = false;
 
     public Pixel(int argb) {
         this.a = (argb >> 24) & 0xFF;
