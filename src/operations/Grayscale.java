@@ -7,7 +7,7 @@ import utils.Pixel;
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Grayscale {
-    public static Image toGrayscale(Image image) {
+    public static Image applyGrayscale(Image image) {
         Pixel[][] pixels = image.getPixels();
 
         int average;
