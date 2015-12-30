@@ -3,7 +3,7 @@ package operations;
 import utils.Image;
 
 /**
- * Created by Kalle Bornemark on 2015-12-29.
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class GaussianBlur {
     public static Image applyGaussianBlur(Image image) {

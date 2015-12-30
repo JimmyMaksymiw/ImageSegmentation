@@ -3,13 +3,14 @@ package test;
 import operations.Grayscale;
 import utils.Image;
 
+import java.io.IOException;
+
 /**
- * Created by Kalle Bornemark on 2015-12-29.
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class TestGrayscale {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Image image = new Image("resources/orange_flower.jpg");
-        System.out.println("Width: " + image.getWidth() + "\nHeight: " + image.getHeight());
         image = Grayscale.toGrayscale(image);
         image.saveImage("testResults/flower_to_grayscale.png");
     }

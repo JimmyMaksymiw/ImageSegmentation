@@ -3,7 +3,7 @@ import gui.GUI;
 import javax.swing.*;
 
 /**
- * @author Jimmy Maksymiw
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class StartGUI {
     public static void main(String[] args) {

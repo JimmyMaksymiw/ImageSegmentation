@@ -6,8 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+
 /**
- * @author Jimmy Maksymiw
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class GUI {
     private JFrame frame;
@@ -16,6 +19,7 @@ public class GUI {
     private JButton btnSaveImage;
     private JLabel lblImageSelected;
     private JLabel lblImageRemade;
+    private JPanel pnlCenter;
 
 
     /**
@@ -56,7 +60,7 @@ public class GUI {
         pnlNorth.add(btnSaveImage);
 
         // Center
-        JPanel pnlCenter = new JPanel(new GridLayout(1,2,0,0));
+        pnlCenter = new JPanel(new GridLayout(1,2,0,0));
         lblImageSelected = new JLabel("");
         lblImageRemade = new JLabel("");
         pnlCenter.add(lblImageSelected);
@@ -80,6 +84,18 @@ public class GUI {
         ButtonListener buttonListener = new ButtonListener();
         btnChooseImage.addActionListener(buttonListener);
         btnSaveImage.addActionListener(buttonListener);
+        pnlCenter.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                controller.changeImagePanelSize(pnlCenter.getWidth(), pnlCenter.getHeight());
+            }
+            @Override
+            public void componentMoved(ComponentEvent e) {}
+            @Override
+            public void componentShown(ComponentEvent e) {}
+            @Override
+            public void componentHidden(ComponentEvent e) {}
+        });
     }
 
 
@@ -104,6 +120,7 @@ public class GUI {
         public void actionPerformed(ActionEvent e) {
             Object obj = e.getSource();
             if (obj == btnChooseImage) {
+
                 controller.chooseFile();
             } else if (obj == btnSaveImage) {
                 controller.saveImage();

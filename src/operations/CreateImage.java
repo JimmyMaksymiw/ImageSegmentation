@@ -7,7 +7,7 @@ import utils.Image;
 import utils.Pixel;
 
 /**
- * Created by Kalle Bornemark on 2015-12-29.
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class CreateImage {
     public static void main(String[] args) {

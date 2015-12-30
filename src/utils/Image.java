@@ -7,21 +7,17 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author Jimmy Maksymiw
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Image {
     private Pixel[][] pixels;
 
-    public Image(String filePath) {
-        BufferedImage bufferedImage;
-        try {
-            bufferedImage = ImageIO.read(new File(filePath));
-            pixels = newImage(bufferedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
+    public Image(String filePath) throws IOException {
+        BufferedImage bufferedImage;
+        bufferedImage = ImageIO.read(new File(filePath));
+        pixels = newImage(bufferedImage);
+    }
     public Image(Pixel[][] pixels) {
         this.pixels = pixels;
     }
@@ -52,7 +48,7 @@ public class Image {
 
     public void saveImage(String fileName) {
         try {
-            BufferedImage bufferedImage = createBufferedImage();
+            BufferedImage bufferedImage = getBufferedImage();
             ImageIO.write(bufferedImage, "PNG", new File(fileName));
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,7 +97,7 @@ public class Image {
         return img;
     }
 
-    public BufferedImage createBufferedImage() {
+    public BufferedImage getBufferedImage() {
         int height = pixels.length;
         int width = pixels[0].length;
 

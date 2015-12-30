@@ -1,18 +1,17 @@
 package test;
 
-import operations.GaussianBlur;
 import operations.MotionBlur;
 import utils.Image;
 
+import java.io.IOException;
+
 /**
- * Created by Kalle Bornemark on 2015-12-29.
+ * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class TestMotionBlur {
-    public static void main(String[] args) {
-//        Image image = new Image("resources/medium.jpg");
+    public static void main(String[] args) throws IOException {
         Image image = new Image("resources/castle.jpg");
         image = MotionBlur.applyMotionBlur(image);
-//        image.saveImage("testResults/gaussian_test_medium5.jpg");
         image.saveImage("testResults/castle_motion_blur.jpg");
     }
 }
