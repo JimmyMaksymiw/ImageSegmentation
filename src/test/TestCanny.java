@@ -34,7 +34,7 @@ public class TestCanny {
         image = Sobel.applySobel(image);
         image.saveImage("testResults/" + fileName + "3_sobel");
 
-        image = new Threshold().segmentize(image);
+        image = new Threshold(image, 120).segmentize();
         image.saveImage("testResults/" + fileName + "4_threshold");
 
     }

@@ -22,7 +22,7 @@ public class TestThreshold {
         Image image = new Image("resources/" + fileName + ".png");
 //        Image image = new Image("testResults/" + fileName + ".jpg");
 
-        image = new Threshold().segmentize(image);
+        image = new Threshold(image, 120).segmentize();
         image.saveImage("testResults/" + fileName + "_threshold");
 
     }

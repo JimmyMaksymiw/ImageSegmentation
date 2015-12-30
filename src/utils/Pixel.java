@@ -8,7 +8,7 @@ public class Pixel {
     private int r;
     private int g;
     private int b;
-    private boolean visisted = false;
+    private boolean visited = false;
 
     public Pixel(int argb) {
         this.a = (argb >> 24) & 0xFF;
@@ -67,6 +67,14 @@ public class Pixel {
         this.r = r;
         this.g = g;
         this.b = b;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     @Override
