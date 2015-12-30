@@ -49,7 +49,7 @@ public class Image {
     public void saveImage(String fileName) {
         try {
             BufferedImage bufferedImage = getBufferedImage();
-            ImageIO.write(bufferedImage, "PNG", new File(fileName));
+            ImageIO.write(bufferedImage, "png", new File(fileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

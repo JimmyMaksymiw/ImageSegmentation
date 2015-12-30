@@ -13,7 +13,7 @@ public class TestGaussianBlur {
 //        Image image = new Image("resources/medium.jpg");
         Image image = new Image("resources/castle.jpg");
         image = GaussianBlur.applyGaussianBlur(image);
-//        image.saveImage("testResults/gaussian_test_medium5.jpg");
-        image.saveImage("testResults/castle_gaussian_blur.jpg");
+//        image.saveImage("testResults/gaussian_test_medium5");
+        image.saveImage("testResults/castle_gaussian_blur");
     }
 }

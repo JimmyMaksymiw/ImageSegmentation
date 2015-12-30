@@ -28,7 +28,6 @@ public class Convolution {
 
         width = image.getWidth();
         height = image.getHeight();
-        System.out.println("Width: " + width + ", Height: " + height);
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {

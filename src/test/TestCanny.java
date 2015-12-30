@@ -14,7 +14,7 @@ public class TestCanny {
     public static void main(String[] args) throws IOException {
 
         // Choose file.
-//        String fileName = "castle_gaussian_blur";
+//        String fileName = "orange_flower";
         String fileName = "valve";
 
         // Load Image.
@@ -23,15 +23,15 @@ public class TestCanny {
 
         // Grayscale.
         image = Grayscale.applyGrayscale(image);
-        image.saveImage("testResults/" + fileName + "_grayscale.png");
+        image.saveImage("testResults/" + fileName + "_grayscale");
 
         // Gaussian blur.
         image = GaussianBlur.applyGaussianBlur(image);
-        image.saveImage("testResults/" + fileName + "_gaussian_blur.png");
+        image.saveImage("testResults/" + fileName + "_gaussian_blur");
 
         // Sobel.
         image = Sobel.applySobel(image);
-        image.saveImage("testResults/" + fileName + "_sobel.png");
+        image.saveImage("testResults/" + fileName + "_sobel");
 
     }
 }
