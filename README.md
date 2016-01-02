@@ -34,16 +34,18 @@ Förväntad utdata:
 2. Separata bilder för alla segment som uppfyller de satta storlekskraven
 
 ##### Indata
+* Bild:<br>
+<img src="/tests/segmentize/colors.jpg" width="400"><br><br>
 * segThres: 120
 * segMin: 1000
 * segMax: 6000
 
 ##### Resultat
-< BILD PÅ SEGMENTERAD COLORS >
+<img src="/tests/segmentize/colors_segmentize_thres-120.png" width="400"><br><br>
+Dessutom genereras separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel:
+<img src="tests/segmentize/colors/colors_seg-5_size-1000-to-6000.png" width="300">
+<img src="tests/segmentize/colors/colors_seg-24_size-1000-to-6000.png" width="300"><br><br>
 
-Dessutom genereras separata bilder för varje segment (enskilda glödlampor i detta fall). Exempel:
-
-< BILD PÅ ENSKILD GLÖDLAMPA >
 
 
 ### Test 2: Konturdetektering med Sobelkärna
