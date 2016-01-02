@@ -21,28 +21,28 @@ public class TestAll {
 
         // Load Image
 //        Image image = new Image("resources/" + fileName + ".png", fileName);
-        Image image = new Image("resources/" + fileName + ".jpg", fileName);
+        Image image = new Image("resources", fileName, "jpg");
 //        Image image = new Image("testResults/" + fileName + ".jpg", fileName);
 
         // Grayscale
         image = Grayscale.applyGrayscale(image);
-        image.saveImage("testResults/" + fileName + "1_grayscale");
+        image.saveImage("testResults", fileName + "1_grayscale");
 
         // Gaussian blur
         image = GaussianBlur.applyGaussianBlur(image);
-        image.saveImage("testResults/" + fileName + "2_gaussian_blur");
+        image.saveImage("testResults", fileName + "2_gaussian_blur");
 
         // Sobel
         int sobelThres = 50;    // Min and max pixel intensity (both ways)
         image = Sobel.applySobel(image, sobelThres);
-        image.saveImage("testResults/" + fileName + "3_sobel-" + sobelThres);
+        image.saveImage("testResults", fileName + "3_sobel-" + sobelThres);
 
         // Segmentation
         int segThres = 130;     // Max pixel intensity
-        int segMin = 1000;      // Min segment size
-        int segMax = 1500;      // Max segment size
-        image = new SegmentizeWithThreshold(image, segThres, true, segMin, segMax).segmentize();
-        image.saveImage("testResults/" + fileName + "4_segmentize_thres-" + segThres);
+        int segMin = 10000;      // Min segment size
+        int segMax = 30000;      // Max segment size
+        image = new SegmentizeWithThreshold(image, segThres, false, segMin, segMax).segmentize();
+        image.saveImage("testResults", fileName + "4_segmentize_thres-" + segThres);
 
     }
 }

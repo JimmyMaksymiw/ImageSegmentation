@@ -12,11 +12,13 @@ import java.io.IOException;
 public class Image {
     private Pixel[][] pixels;
     private String fileName;
+    private String filePath;
 
-    public Image(String filePath, String fileName) throws IOException {
+    public Image(String filePath, String fileName, String extension) throws IOException {
+        this.filePath = filePath;
         this.fileName = fileName;
         BufferedImage bufferedImage;
-        bufferedImage = ImageIO.read(new File(filePath));
+        bufferedImage = ImageIO.read(new File(filePath + "/" + fileName + "." + extension));
         pixels = newImage(bufferedImage);
     }
     public Image(Pixel[][] pixels) {
@@ -33,12 +35,16 @@ public class Image {
         }
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public String getFileName() {
         return fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
 
     public int getWidth() {
@@ -54,15 +60,6 @@ public class Image {
             return pixels[y][x];
         }
         return null;
-    }
-
-    public void saveImage(String fileName) {
-        try {
-            BufferedImage bufferedImage = getBufferedImage();
-            ImageIO.write(bufferedImage, "png", new File(fileName + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void saveImage(String location, String fileName) {

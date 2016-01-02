@@ -77,7 +77,10 @@ public class SegmentizeWithThreshold {
     private void findNeighbors() {
         // Segmentation image
         int innerCounter = 0;
-        Image seg = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+        Image seg = null;
+        if (saveSegments) {
+            seg = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+        }
 
         // Loop while there's still candidates
         while (candidates.size() > 0) {
@@ -111,7 +114,9 @@ public class SegmentizeWithThreshold {
                         destImage.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
 
                         // Save segmentation image
-                        seg.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
+                        if (saveSegments) {
+                            seg.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
+                        }
 
                         // Mark candidate as visited
                         image.getPixel(x, y).setVisited(true);
@@ -133,7 +138,8 @@ public class SegmentizeWithThreshold {
         // Save segment image if save is on and if segment fulfills size requirement
         if (saveSegments && innerCounter >= segMin && innerCounter <= segMax) {
             // Create segment folder
-            seg.saveImage("testResults/" + image.getFileName(), image.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" + segMax);
+            seg.saveImage(image.getFilePath() + "/" + seg.getFileName(), seg.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" +
+                    segMax);
         }
     }
 }

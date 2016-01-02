@@ -27,6 +27,6 @@ public class CreateImage {
                 }
             }
         }
-        smallImage.saveImage("resources/" + filename + ".jpg");
+        smallImage.saveImage("resources", filename);
     }
 }
