@@ -27,9 +27,8 @@ De tröskelvärden om behöver sättas är:
 * segThres: Hur stor skillnad det får vara i färgvärden inom samma segment
 * segMin: Minimalt antal pixelar i samma segment för att en separat bild skall genereras
 * segMax: Maximalt antal pixelar i samma segment för att en separat bild skall genereras
+&nbsp;
 
-
-* Indata: *colors.png*
 * Förväntad utdata:
     1. En bearbetat bild där segmenten är förtydligade med hjälp av tröskelvärden
     2. Separata bilder för alla segment som uppfyller de satta storlekskraven
