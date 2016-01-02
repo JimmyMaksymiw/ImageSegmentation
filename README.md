@@ -1,6 +1,6 @@
 # ImageSegmentation
 
-**Uppgift 2 för Avancerade metoder för text och bildbehandling (DA357A)**  
+**Skoluppgift till kursen "Avancerade metoder för text och bildbehandling" (DA357A)**  
 Kalle Bornemark - 861209-3917  
 Jimmy Maksymiw - 891031-1730
 
@@ -8,7 +8,7 @@ Jimmy Maksymiw - 891031-1730
 
 ## Programbeskrivning
 
-Detta program är konstruerat i syfte att lära oss hur man manipulerar bilder i Java och förser användaren med följande funktionalitet:
+Detta program är konstruerat i syfte att påöka våra kunskaper om hur man manipulerar bilder i Java. Användaren förses med följande funktionalitet:
 
   * Gråskala
   * Gaussian blur
@@ -21,7 +21,7 @@ Detta program är konstruerat i syfte att lära oss hur man manipulerar bilder i
 ## Testfall
 
 ### Test 1: Segmentering med tröskelvärde
-Målet med detta test är att isolera ut segment ur en bild på ett så rent sätt som möjligt.
+Målet med detta test är att se hur tydligt vi kan urskilja enskilda objekt från dess omgivning. Metoden skapar segment genom att gå igenom input-bildens alla pixlar för att sedan jämföra deras attribut med intilliggande pixlar. En grannpixel adderas till ett segment om dess färgvärden är inom det utsatta intervallet (segThres).
 
 De tröskelvärden som behöver sättas är:
 * segThres: Hur stor skillnad det får vara i färgvärden inom samma segment
@@ -30,7 +30,7 @@ De tröskelvärden som behöver sättas är:
 
 Förväntad utdata:
 
-1. En bearbetat bild där segmenten är förtydligade med hjälp av tröskelvärden
+1. En bearbetad bild där segmenten är förtydligade med hjälp av tröskelvärden
 2. Separata bilder för alla segment som uppfyller de satta storlekskraven
 
 ##### Indata
