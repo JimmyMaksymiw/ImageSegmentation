@@ -36,7 +36,6 @@ Förväntad utdata:
 ##### Indata
 * Bild:<br>
 <img src="/tests/segmentize/colors.jpg" width="400"><br><br>
-<img src="https://raw.githubusercontent.com/JimmyMaksymiw/ImageSegmentation/master/tests/segmentize/colors.jpg" width="400"><br><br>
 * segThres: 120
 * segMin: 1000
 * segMax: 6000
