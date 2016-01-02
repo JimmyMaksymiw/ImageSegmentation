@@ -3,7 +3,7 @@ package test;
 import operations.GaussianBlur;
 import operations.Grayscale;
 import operations.Sobel;
-import segmentations.Threshold;
+import segmentations.SegmentizeWithThreshold;
 import utils.Image;
 
 import java.io.IOException;
@@ -41,8 +41,8 @@ public class TestAll {
         int segThres = 130;     // Max pixel intensity
         int segMin = 1000;      // Min segment size
         int segMax = 1500;      // Max segment size
-        image = new Threshold(image, segThres, true, segMin, segMax).segmentize();
-        image.saveImage("testResults/" + fileName + "4_threshold_thres-" + segThres);
+        image = new SegmentizeWithThreshold(image, segThres, true, segMin, segMax).segmentize();
+        image.saveImage("testResults/" + fileName + "4_segmentize_thres-" + segThres);
 
     }
 }

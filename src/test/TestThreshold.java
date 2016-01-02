@@ -2,10 +2,7 @@ package test;
 
 import java.io.IOException;
 
-import operations.GaussianBlur;
-import operations.Grayscale;
-import operations.Sobel;
-import segmentations.Threshold;
+import segmentations.SegmentizeWithThreshold;
 import utils.Image;
 
 /**
@@ -26,7 +23,7 @@ public class TestThreshold {
         int segThres = 120;
         int segMin = 1000;
         int segMax = 6000;
-        image = new Threshold(image, segThres, true, segMin, segMax).segmentize();
+        image = new SegmentizeWithThreshold(image, segThres, true, segMin, segMax).segmentize();
         image.saveImage("testResults/" + fileName + "4_threshold_thres-" + segThres);
     }
 }

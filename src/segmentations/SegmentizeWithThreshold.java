@@ -7,7 +7,7 @@ import utils.Image;
 /**
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
-public class Threshold {
+public class SegmentizeWithThreshold {
     private final int THRESHOLD;
     private LinkedList<Candidate> candidates;
     private Image image;
@@ -30,7 +30,7 @@ public class Threshold {
         }
     }
 
-    public Threshold(Image image, int threshold, boolean saveSegments, int segMin, int segMax) {
+    public SegmentizeWithThreshold(Image image, int threshold, boolean saveSegments, int segMin, int segMax) {
         this.THRESHOLD = threshold;
         this.image = image;
         this.saveSegments = saveSegments;
@@ -126,7 +126,6 @@ public class Threshold {
                         candidates.add(new Candidate(x, y + 1));
                         candidates.add(new Candidate(x + 1, y + 1));
                     }
-
                 }
             }
         }
@@ -134,7 +133,7 @@ public class Threshold {
         // Save segment image if save is on and if segment fulfills size requirement
         if (saveSegments && innerCounter >= segMin && innerCounter <= segMax) {
             // Create segment folder
-            seg.saveImage("testResults/" + image.getFileName(), image.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to" + segMax);
+            seg.saveImage("testResults/" + image.getFileName(), image.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" + segMax);
         }
     }
 }
