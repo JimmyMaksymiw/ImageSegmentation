@@ -4,19 +4,34 @@ import utils.Image;
 import utils.Pixel;
 
 /**
+ * This class i used to apply a kernel on to a image. It iterate through the image and convolve the provided kernel on the image.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Convolution {
     private int[][] kernel;
 
+    /**
+     * Sets the Kernel to the provided one.
+     * @param kernel The provided kernel.
+     */
     public Convolution(int[][] kernel) {
         this.kernel = kernel;
     }
 
+    /**
+     * Convolve the selected kernel with the provided image.
+     * @param image the image to be processed.
+     * @return The new image with the selected kernel applied to it.
+     */
     public Image convolve(Image image) {
+        if (kernel == null) return null;
+
+        // The image to be returned.
         Image out = new Image(image.getWidth(), image.getHeight(), image.getFilePath(), image.getFileName());
 
-        int width, height, min, max, sum = 0;
+        int width = image.getWidth();
+        int height = image.getHeight();
+        int min, max, sum = 0;
 
         // Summarize kernel
         for(int[] cols : kernel) {
@@ -26,9 +41,7 @@ public class Convolution {
         }
         sum = sum < 1 ? 1 : sum;
 
-        width = image.getWidth();
-        height = image.getHeight();
-
+        // Iterate through the image and convolve the kernel on the image.
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 min = -kernel.length / 2;
@@ -51,7 +64,7 @@ public class Convolution {
             }
         }
 
-
+        // return the new image.
         return out;
     }
 }

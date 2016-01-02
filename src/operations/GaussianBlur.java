@@ -3,9 +3,17 @@ package operations;
 import utils.Image;
 
 /**
+ * This class represents the Gaussian function of blurring an image to reduce image noise and reduce detail.
+ * It uses a kernel to reduce the image's high-frequency components.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class GaussianBlur {
+
+    /**
+     * Apply the Gaussian blur to the provided image.
+     * @param image The image Gaussian blur should be applied to.
+     * @return The new image with the Gaussian blur applied to it.
+     */
     public static Image applyGaussianBlur(Image image) {
         /*int[][] kernel = {
                 {1, 4, 7, 4, 1},
@@ -29,7 +37,9 @@ public class GaussianBlur {
                 {1, 1, 1},
         };*/
 
+        // Convolve with the Gaussian blur kernel
         Convolution c = new Convolution(kernel);
+        // Return the new image
         return c.convolve(image);
     }
 }

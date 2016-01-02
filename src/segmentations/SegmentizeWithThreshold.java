@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import utils.Image;
 
 /**
+ * This class represent a the simplest method of image segmentation with a threshold value.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class SegmentizeWithThreshold {
@@ -20,6 +21,9 @@ public class SegmentizeWithThreshold {
     private int segMin;
     private int segMax;
 
+    /**
+     * Class that represent a candidate pixels with x and y value.
+     */
     private class Candidate {
         int x;
         int y;
@@ -30,6 +34,13 @@ public class SegmentizeWithThreshold {
         }
     }
 
+    /**
+     * @param image The image segmentation should be applied to.
+     * @param threshold the threshold to be used.
+     * @param saveSegments true if a single segment should be saved as a image otherwise false.
+     * @param segMin The minimum number of pixels a segment should have to be saved. (only used if saveSegments=true)
+     * @param segMax The maximum number of pixels a segment should have to be saved. (only used if saveSegments=true)
+     */
     public SegmentizeWithThreshold(Image image, int threshold, boolean saveSegments, int segMin, int segMax) {
         this.THRESHOLD = threshold;
         this.image = image;
@@ -50,6 +61,10 @@ public class SegmentizeWithThreshold {
         }
     }
 
+    /**
+     * Runs the segmentation algorithm och the image to separate the different segments from each other
+     * @return The segmented image.
+     */
     public Image segmentize() {
         // Loop through all pixels
         for (int y = 0; y < image.getHeight(); y++) {
@@ -74,6 +89,9 @@ public class SegmentizeWithThreshold {
         return destImage;
     }
 
+    /**
+     * Finds all the neighbor pixels in the same range(threshold) as the selected pixels color..
+     */
     private void findNeighbors() {
         // Segmentation image
         int innerCounter = 0;
