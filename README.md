@@ -29,6 +29,7 @@ De tröskelvärden som behöver sättas är:
 * segMax: Maximalt antal pixelar i samma segment för att en separat bild skall genereras
 
 Förväntad utdata:
+
 1. En bearbetat bild där segmenten är förtydligade med hjälp av tröskelvärden
 2. Separata bilder för alla segment som uppfyller de satta storlekskraven
 
@@ -53,6 +54,7 @@ Här testar vi omvandlingen till gråskala och appliceringen av Gaussian Blur.
 Inga tröskelvärden behöver sättas.
 
 Förväntad utdata:
+
 1. Indatabild omgjord till gråskala
 2. Ovanstående bild med applicerad Gaussian Blur
 
@@ -61,8 +63,10 @@ Förväntad utdata:
 <img src="/tests/grayscale_gaussian/castle.jpg" width="400"><br><br>
 
 ##### Resultat
-1: <img src="/tests/grayscale_gaussian/castle1_grayscale.png" width="400"><br><br>
-2: <img src="tests/grayscale_gaussian/castle2_gaussian_blur.png" width="400"><br><br>
+1: Gråskala<br>
+<img src="/tests/grayscale_gaussian/castle1_grayscale.png" width="400"><br><br>
+2: Gaussian Blur<br>
+<img src="tests/grayscale_gaussian/castle2_gaussian_blur.png" width="400"><br><br>
 
 
 
@@ -74,18 +78,21 @@ Två tröskelvärden behöver sättas:
 * Ett tröskelvärde för hur stora färgskillnader pixlar får ha för att räknas in i samma segment 
 
 Förväntad utdata:
+
 1. Resultatbild från Test 2 med applicerad Sobel-kärna som framhäver konturerna
 2. Ovanstående bild med förfinade konturer genom segmenteringsprocessen
 
 ##### Indata
 * Bild:<br>
-<img src="/tests/grayscale_gaussian/castle_gaussian_blur.png" width="400"><br><br>
+<img src="/tests/sobel/castle.png" width="400"><br><br>
 * sobelThres: 100
 * segThres: 80
 
 ##### Resultat
-1: <img src="tests/grayscale_gaussian/castle_sobel-100.png" width="300"><br><br>
-2: <img src="tests/grayscale_gaussian/castle_sobel-100_segmentize_thres-80.png" width="300"><br><br>
+1: Sobel<br>
+<img src="tests/sobel/castle_sobel-100.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/sobel/castle_sobel-100_segmentize_thres-80.png" width="300"><br><br>
 
 
 
@@ -97,8 +104,10 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 * segThres: 100
 
 ##### Resultat
-1: <img src="tests/sobel/castle_sobel-65.png" width="300"><br><br>
-2: <img src="tests/sobel/castle_sobel-65_segmentize_thres-100.png" width="300"><br><br>
+1: Sobel<br>
+<img src="tests/sobel/castle_sobel-65.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/sobel/castle_sobel-65_segmentize_thres-100.png" width="300"><br><br>
 
 
 
@@ -110,8 +119,10 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 * segThres: 130
 
 ##### Resultat
-1: <img src="tests/sobel/castle_sobel-20.png" width="300"><br><br>
-2: <img src="tests/sobel/castle_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+1: Sobel<br>
+<img src="tests/sobel/castle_sobel-20.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/sobel/castle_sobel-20_segmentize_thres-130.png" width="300"><br><br>
 
 
 
@@ -125,5 +136,7 @@ Med detta test vill vi visa på att lämpliga tröskelvärden för en bild inte 
 * segThres: 130
 
 ##### Resultat
-1: <img src="tests/sobel/orange_flower_sobel-20.png" width="300"><br><br>
-2: <img src="tests/sobel/orange_flower_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+1: Sobel<br>
+<img src="tests/sobel/orange_flower_sobel-20.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/sobel/orange_flower_sobel-20_segmentize_thres-130.png" width="300"><br><br>
