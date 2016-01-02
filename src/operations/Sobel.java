@@ -25,7 +25,7 @@ public class Sobel {
         Image imageY = new Convolution(kernelY).convolve(image);
 
         // New output image
-        Image out = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+        Image out = new Image(image.getWidth(), image.getHeight(), image.getFilePath(), image.getFileName());
 
         // Merge
         for (int y = 0; y < image.getHeight(); y++) {

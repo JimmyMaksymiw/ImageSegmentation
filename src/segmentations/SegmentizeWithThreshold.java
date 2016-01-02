@@ -40,7 +40,7 @@ public class SegmentizeWithThreshold {
 
         // Create containers
         candidates = new LinkedList<>();
-        destImage = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+        destImage = new Image(image.getWidth(), image.getHeight(), image.getFilePath(), image.getFileName());
 
         // Fill visited array with NOT_VISITED
         for (int y = 0; y < image.getHeight(); y++) {
@@ -79,7 +79,7 @@ public class SegmentizeWithThreshold {
         int innerCounter = 0;
         Image seg = null;
         if (saveSegments) {
-            seg = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+            seg = new Image(image.getWidth(), image.getHeight(), image.getFilePath(), image.getFileName());
         }
 
         // Loop while there's still candidates

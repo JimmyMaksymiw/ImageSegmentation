@@ -11,9 +11,10 @@ import utils.Pixel;
  */
 public class CreateImage {
     public static void main(String[] args) {
+        String folder = "resources";
         String filename = "test";
         Random random = new Random();
-        Image smallImage = new Image(800, 500, filename);
+        Image smallImage = new Image(800, 500, folder, filename);
         Pixel[][] pixel = smallImage.getPixels();
         for (int i = 0; i < smallImage.getHeight(); i++) {
             for (int j = 0; j < smallImage.getWidth(); j++) {

@@ -14,7 +14,7 @@ public class Convolution {
     }
 
     public Image convolve(Image image) {
-        Image out = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+        Image out = new Image(image.getWidth(), image.getHeight(), image.getFilePath(), image.getFileName());
 
         int width, height, min, max, sum = 0;
 

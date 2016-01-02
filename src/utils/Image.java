@@ -25,7 +25,8 @@ public class Image {
         this.pixels = pixels;
     }
 
-    public Image(int width, int height, String filename) {
+    public Image(int width, int height, String filePath, String filename) {
+        this.filePath = filePath;
         this.fileName = filename;
         pixels = new Pixel[height][width];
         for (int i = 0; i < height; i++) {
