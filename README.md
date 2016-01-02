@@ -20,7 +20,7 @@ Detta program är konstruerat i syfte att påöka våra kunskaper om hur man man
 
 ## Testfall
 
-### Test 1: Segmentering med tröskelvärde
+### Test 1.1: Segmentering med tröskelvärde
 Målet med detta test är att se hur tydligt vi kan urskilja enskilda objekt från dess omgivning. Metoden skapar segment genom att gå igenom input-bildens alla pixlar för att sedan jämföra deras attribut med intilliggande pixlar. En grannpixel adderas till ett segment om dess färgvärden är inom det utsatta intervallet (segThres).
 
 De tröskelvärden som behöver sättas är:
@@ -35,17 +35,41 @@ Förväntad utdata:
 
 ##### Indata
 * Bild:<br>
-<img src="/tests/segmentize/colors.jpg" width="400"><br><br>
+<img src="tests/test1_segmentize/colors.jpg" width="400"><br><br>
+* segThres: 70
+* segMin: 300
+* segMax: 10000
+
+##### Resultat
+1: Segmentering <br><img src="tests/test1_segmentize/test1.1/colors_segmentize_thres-70.png" width="400"><br><br>
+2: Dessutom genereras separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
+<img src="tests/test1_segmentize/test1.1/colors/colors_seg-2_size-300-to-10000.png" width="300">  <img src="tests/test1_segmentize/test1.1/colors/colors_seg-18_size-300-to-10000.png" width="300"><br><br>
+
+### Test 1.2: Segmentering med tröskelvärde (forts.)
+Detta test är en förlängning av Test 1.1 och utförs därför på samma vis fast med annat tröskelvärde och storlek på segment.
+
+##### Indata
 * segThres: 120
+* segMin: 2000
+* segMax: 8000
+
+##### Resultat
+1: Segmentering <br><img src="tests/test1_segmentize/test1.2/colors_segmentize_thres-120.png" width="400"><br><br>
+2: Separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
+<img src="tests/test1_segmentize/test1.2/colors/colors_seg-0_size-2000-to-8000.png" width="300">  <img src="tests/test1_segmentize/test1.2/colors/colors_seg-18_size-2000-to-8000.png" width="300"><br><br>
+
+### Test 1.3: Segmentering med tröskelvärde (forts.)
+Detta test är en förlängning av Test 1.1 och utförs därför på samma vis fast med annat tröskelvärde och storlek på segment.
+
+##### Indata
+* segThres: 100
 * segMin: 1000
 * segMax: 6000
 
 ##### Resultat
-<img src="/tests/segmentize/colors_segmentize_thres-120.png" width="400"><br><br>
-Dessutom genereras separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel:
-<img src="tests/segmentize/colors/colors_seg-5_size-1000-to-6000.png" width="300">
-<img src="tests/segmentize/colors/colors_seg-24_size-1000-to-6000.png" width="300"><br><br>
-
+1: Segmentering <br><img src="tests/test1_segmentize/test1.3/colors_segmentize_thres-100.png" width="400"><br><br>
+2: Separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
+<img src="tests/test1_segmentize/test1.3/colors/colors_seg-9_size-1000-to-6000.png" width="300">  <img src="tests/test1_segmentize/test1.3/colors/colors_seg-19_size-1000-to-6000.png" width="300"><br><br>
 
 
 ### Test 2: Gråskala och Gaussian Blur
@@ -60,13 +84,13 @@ Förväntad utdata:
 
 ##### Indata
 * Bild:<br>
-<img src="/tests/grayscale_gaussian/castle.jpg" width="400"><br><br>
+<img src="tests/test2_grayscale_gaussian/castle.jpg" width="400"><br><br>
 
 ##### Resultat
 1: Gråskala<br>
-<img src="/tests/grayscale_gaussian/castle1_grayscale.png" width="400"><br><br>
+<img src="tests/test2_grayscale_gaussian/castle1_grayscale.png" width="400"><br><br>
 2: Gaussian Blur<br>
-<img src="tests/grayscale_gaussian/castle2_gaussian_blur.png" width="400"><br><br>
+<img src="tests/test2_grayscale_gaussian/castle2_gaussian_blur.png" width="400"><br><br>
 
 
 
@@ -84,15 +108,15 @@ Förväntad utdata:
 
 ##### Indata
 * Bild:<br>
-<img src="/tests/sobel/castle.png" width="400"><br><br>
+<img src="tests/test3_sobel/castle.png" width="400"><br><br>
 * sobelThres: 100
 * segThres: 80
 
 ##### Resultat
 1: Sobel<br>
-<img src="tests/sobel/castle_sobel-100.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.1/castle_sobel-100.png" width="300"><br><br>
 2: Segmentering<br>
-<img src="tests/sobel/castle_sobel-100_segmentize_thres-80.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.1/castle_sobel-100_segmentize_thres-80.png" width="300"><br><br>
 
 
 
@@ -105,9 +129,9 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 
 ##### Resultat
 1: Sobel<br>
-<img src="tests/sobel/castle_sobel-65.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.2/castle_sobel-65.png" width="300"><br><br>
 2: Segmentering<br>
-<img src="tests/sobel/castle_sobel-65_segmentize_thres-100.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.2/castle_sobel-65_segmentize_thres-100.png" width="300"><br><br>
 
 
 
@@ -120,23 +144,52 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 
 ##### Resultat
 1: Sobel<br>
-<img src="tests/sobel/castle_sobel-20.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.3/castle_sobel-20.png" width="300"><br><br>
 2: Segmentering<br>
-<img src="tests/sobel/castle_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+<img src="tests/test3_sobel/test3.3/castle_sobel-20_segmentize_thres-130.png" width="300"><br><br>
 
 
 
-### Test 4: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
+### Test 4.1: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
 Med detta test vill vi visa på att lämpliga tröskelvärden för en bild inte nödvändigtvis fungerar för en annan. 
 
 ##### Indata
 * Bild: Denna bild är förbehandlad med gråskala och Gaussian Blur<br>
-<img src="tests/sobel/orange_flower.png" width="300">
+<img src="tests/test4_sobel/orange_flower.png" width="300">
 * sobelThres: 20
 * segThres: 130
 
 ##### Resultat
 1: Sobel<br>
-<img src="tests/sobel/orange_flower_sobel-20.png" width="300"><br><br>
+<img src="tests/test4_sobel/test4.1/orange_flower_sobel-20.png" width="300"><br><br>
 2: Segmentering<br>
-<img src="tests/sobel/orange_flower_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+<img src="tests/test4_sobel/test4.1/orange_flower_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+
+### Test 4.2: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
+Detta test är en förlängning av Test 4.1 och utförs därför på samma vis fast med andra tröskelvärden för att få ett bättre resultat.
+
+##### Indata
+* sobelThres: 100
+* segThres: 70
+
+##### Resultat
+1: Sobel<br>
+<img src="tests/test4_sobel/test4.2/orange_flower_sobel-100.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/test4_sobel/test4.2/orange_flower_sobel-100_segmentize_thres-70.png" width="300"><br><br>
+
+### Test 4.3: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
+Detta test är en förlängning av Test 4.1 och utförs därför på samma vis fast med andra tröskelvärden för att få ett bättre resultat.
+
+##### Indata
+* sobelThres: 110
+* segThres: 25
+
+##### Resultat
+1: Sobel<br>
+<img src="tests/test4_sobel/test4.3/orange_flower_sobel-110.png" width="300"><br><br>
+2: Segmentering<br>
+<img src="tests/test4_sobel/test4.3/orange_flower_sobel-110_segmentize_thres-30.png" width="300"><br><br>
+
+
+## Slutsats
