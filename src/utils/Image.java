@@ -11,9 +11,10 @@ import java.io.IOException;
  */
 public class Image {
     private Pixel[][] pixels;
+    private String fileName;
 
-
-    public Image(String filePath) throws IOException {
+    public Image(String filePath, String fileName) throws IOException {
+        this.fileName = fileName;
         BufferedImage bufferedImage;
         bufferedImage = ImageIO.read(new File(filePath));
         pixels = newImage(bufferedImage);
@@ -22,13 +23,22 @@ public class Image {
         this.pixels = pixels;
     }
 
-    public Image(int width, int height) {
+    public Image(int width, int height, String filename) {
+        this.fileName = filename;
         pixels = new Pixel[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 pixels[i][j] = new Pixel();
             }
         }
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     public int getWidth() {
@@ -50,6 +60,23 @@ public class Image {
         try {
             BufferedImage bufferedImage = getBufferedImage();
             ImageIO.write(bufferedImage, "png", new File(fileName + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveImage(String location, String fileName) {
+        try {
+            File file = new File(location);
+            if (!file.exists()) {
+                if (file.mkdir()) {
+                    System.out.println("Directory is created!");
+                } else {
+                    System.out.println("Failed to create directory!");
+                }
+            }
+            BufferedImage bufferedImage = getBufferedImage();
+            ImageIO.write(bufferedImage, "png", new File(location + "/" + fileName + ".png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

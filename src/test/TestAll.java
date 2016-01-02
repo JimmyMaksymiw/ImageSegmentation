@@ -1,0 +1,48 @@
+package test;
+
+import operations.GaussianBlur;
+import operations.Grayscale;
+import operations.Sobel;
+import segmentations.Threshold;
+import utils.Image;
+
+import java.io.IOException;
+
+/**
+ * @author Jimmy Maksymiw & Kalle Bornemark
+ */
+public class TestAll {
+    public static void main(String[] args) throws IOException {
+
+        // Choose file
+//        String fileName = "orange_flower";
+        String fileName = "castle";
+//        String fileName = "colors";
+
+        // Load Image
+//        Image image = new Image("resources/" + fileName + ".png", fileName);
+        Image image = new Image("resources/" + fileName + ".jpg", fileName);
+//        Image image = new Image("testResults/" + fileName + ".jpg", fileName);
+
+        // Grayscale
+        image = Grayscale.applyGrayscale(image);
+        image.saveImage("testResults/" + fileName + "1_grayscale");
+
+        // Gaussian blur
+        image = GaussianBlur.applyGaussianBlur(image);
+        image.saveImage("testResults/" + fileName + "2_gaussian_blur");
+
+        // Sobel
+        int sobelThres = 50;    // Min and max pixel intensity (both ways)
+        image = Sobel.applySobel(image, sobelThres);
+        image.saveImage("testResults/" + fileName + "3_sobel-" + sobelThres);
+
+        // Segmentation
+        int segThres = 130;     // Max pixel intensity
+        int segMin = 1000;      // Min segment size
+        int segMax = 1500;      // Max segment size
+        image = new Threshold(image, segThres, true, segMin, segMax).segmentize();
+        image.saveImage("testResults/" + fileName + "4_threshold_thres-" + segThres);
+
+    }
+}

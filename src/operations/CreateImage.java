@@ -11,8 +11,9 @@ import utils.Pixel;
  */
 public class CreateImage {
     public static void main(String[] args) {
+        String filename = "test";
         Random random = new Random();
-        Image smallImage = new Image(800, 500);
+        Image smallImage = new Image(800, 500, filename);
         Pixel[][] pixel = smallImage.getPixels();
         for (int i = 0; i < smallImage.getHeight(); i++) {
             for (int j = 0; j < smallImage.getWidth(); j++) {
@@ -26,6 +27,6 @@ public class CreateImage {
                 }
             }
         }
-        smallImage.saveImage("resources/medium.jpg");
+        smallImage.saveImage("resources/" + filename + ".jpg");
     }
 }

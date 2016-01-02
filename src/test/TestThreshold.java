@@ -17,13 +17,16 @@ public class TestThreshold {
         // Choose file.
 //        String fileName = "orange_flower";
         String fileName = "colors";
+//        String fileName = "castle";
 
         // Load Image.
-        Image image = new Image("resources/" + fileName + ".png");
-//        Image image = new Image("testResults/" + fileName + ".jpg");
+        Image image = new Image("resources/" + fileName + ".png", fileName);
+//        Image image = new Image("resources/" + fileName + ".jpg", fileName);
 
-        image = new Threshold(image, 120).segmentize();
-        image.saveImage("testResults/" + fileName + "_threshold");
-
+        int segThres = 120;
+        int segMin = 1000;
+        int segMax = 6000;
+        image = new Threshold(image, segThres, true, segMin, segMax).segmentize();
+        image.saveImage("testResults/" + fileName + "4_threshold_thres-" + segThres);
     }
 }

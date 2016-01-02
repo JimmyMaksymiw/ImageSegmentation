@@ -10,8 +10,9 @@ import java.io.IOException;
  */
 public class TestGaussianBlur {
     public static void main(String[] args) throws IOException {
+        String fileName = "castle";
 //        Image image = new Image("resources/medium.jpg");
-        Image image = new Image("resources/castle.jpg");
+        Image image = new Image("resources/castle.jpg", fileName);
         image = GaussianBlur.applyGaussianBlur(image);
 //        image.saveImage("testResults/gaussian_test_medium5");
         image.saveImage("testResults/castle_gaussian_blur");

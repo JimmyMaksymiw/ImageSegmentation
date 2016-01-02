@@ -15,6 +15,10 @@ public class Threshold {
     private int r;
     private int g;
     private int b;
+    private boolean saveSegments;
+    private int segCounter;
+    private int segMin;
+    private int segMax;
 
     private class Candidate {
         int x;
@@ -26,13 +30,17 @@ public class Threshold {
         }
     }
 
-    public Threshold(Image image, int threshold) {
+    public Threshold(Image image, int threshold, boolean saveSegments, int segMin, int segMax) {
         this.THRESHOLD = threshold;
         this.image = image;
+        this.saveSegments = saveSegments;
+        this.segMin = segMin;
+        this.segMax = segMax;
+        segCounter = 0;
 
         // Create containers
         candidates = new LinkedList<>();
-        destImage = new Image(image.getWidth(), image.getHeight());
+        destImage = new Image(image.getWidth(), image.getHeight(), image.getFileName());
 
         // Fill visited array with NOT_VISITED
         for (int y = 0; y < image.getHeight(); y++) {
@@ -67,6 +75,10 @@ public class Threshold {
     }
 
     private void findNeighbors() {
+        // Segmentation image
+        int innerCounter = 0;
+        Image seg = new Image(image.getWidth(), image.getHeight(), image.getFileName());
+
         // Loop while there's still candidates
         while (candidates.size() > 0) {
 
@@ -93,9 +105,13 @@ public class Threshold {
 
                     // Check if colors are under threshold
                     if (rDiff <= THRESHOLD && gDiff <= THRESHOLD && bDiff <= THRESHOLD) {
+                        innerCounter++;
 
                         // Add candidate to the destination image
                         destImage.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
+
+                        // Save segmentation image
+                        seg.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
 
                         // Mark candidate as visited
                         image.getPixel(x, y).setVisited(true);
@@ -113,6 +129,12 @@ public class Threshold {
 
                 }
             }
+        }
+
+        // Save segment image if save is on and if segment fulfills size requirement
+        if (saveSegments && innerCounter >= segMin && innerCounter <= segMax) {
+            // Create segment folder
+            seg.saveImage("testResults/" + image.getFileName(), image.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to" + segMax);
         }
     }
 }

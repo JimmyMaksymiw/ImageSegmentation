@@ -7,9 +7,7 @@ import utils.Pixel;
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Sobel {
-    public static Image applySobel(Image image) {
-        final int THRESHOLD = 50;
-
+    public static Image applySobel(Image image, final int THRESHOLD) {
         int[][] kernelX = {
                 {-1, 0, 1},
                 {-2, 0, 2},
@@ -27,7 +25,7 @@ public class Sobel {
         Image imageY = new Convolution(kernelY).convolve(image);
 
         // New output image
-        Image out = new Image(image.getWidth(), image.getHeight());
+        Image out = new Image(image.getWidth(), image.getHeight(), image.getFileName());
 
         // Merge
         for (int y = 0; y < image.getHeight(); y++) {

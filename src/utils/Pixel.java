@@ -25,7 +25,7 @@ public class Pixel {
     }
 
     public Pixel() {
-        this(255, 0, 0, 0);
+        this(255, 255, 255, 255);
     }
 
     public int getA() {

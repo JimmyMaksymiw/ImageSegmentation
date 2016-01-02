@@ -43,7 +43,7 @@ public class Controller {
 
         String filePath = fileChooser.getSelectedFile().toString();
         try {
-            this.selectedImage = new Image(filePath);
+            this.selectedImage = new Image(filePath, fileChooser.getSelectedFile().getName());
             setSelectedImage();
         } catch (IOException e) {
             e.printStackTrace();
