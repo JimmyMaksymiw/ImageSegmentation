@@ -220,3 +220,4 @@ Blommans konturer är nu betydligt lättare att urskilja än de som resultatet a
 
 
 ## Slutsats
+Vi märker tydligt att man inför varje bildbehandling behöver tänka igenom tröskelvärdena för att generera acceptabla resultat. En ursprungsbild med svaga konturer kräver ett lägre tröskelvärde på segmenteringen för att merparten konturer inte skall försvinna. Samtidigt måste tröskelvärdet för Sobel-filtret höjas. Bilder kan skilja sig avsevärt i komposition och färgskillnader, så några fasta välfungerannde tröskelvärden var omöjligt att fastställa. Vi fick istället testa oss fram med olika värden för varje enskild bild.
