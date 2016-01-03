@@ -22,7 +22,7 @@ public class SegmentizeWithThreshold {
     private int segMax;
 
     /**
-     * Pixels that is a candidate of belonging to a segment.
+     * Pixel that is a candidate of belonging to a segment.
      */
     private class Candidate {
         int x;
@@ -62,7 +62,7 @@ public class SegmentizeWithThreshold {
     }
 
     /**
-     * Runs the segmentation algorithm och the image to separate the different segments from each other
+     * Runs the segmentation algorithm och the image to separate the different segments from each other.
      * @return The segmented image.
      */
     public Image segmentize() {
@@ -90,7 +90,7 @@ public class SegmentizeWithThreshold {
     }
 
     /**
-     * Finds all the neighbor pixels in the same range(threshold) as the selected pixels color..
+     * Finds all the neighbor pixels in the same range (threshold) as the selected pixels color.
      */
     private void findNeighbors() {
         // Segmentation image
@@ -119,7 +119,7 @@ public class SegmentizeWithThreshold {
                     int g = image.getPixel(x, y).getG();
                     int b = image.getPixel(x, y).getB();
 
-                    // Calculate differences in rgb values
+                    // Calculate differences in RGB values
                     int rDiff = Math.abs(r - this.r);
                     int gDiff = Math.abs(g - this.g);
                     int bDiff = Math.abs(b - this.b);
@@ -132,7 +132,7 @@ public class SegmentizeWithThreshold {
                         destImage.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
 
                         // Save segmentation image
-                        if (saveSegments) {
+                        if (saveSegments && seg != null) {
                             seg.getPixel(x, y).setARGB(255, this.r, this.g, this.b);
                         }
 
@@ -158,7 +158,8 @@ public class SegmentizeWithThreshold {
             // Create segment folder
             seg.saveImage(
                     image.getFilePath() + "/" + seg.getFileName(),                                       // Folder
-                    seg.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" + segMax);   // File name
+                    seg.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" + segMax     // File name
+            );
         }
     }
 }
