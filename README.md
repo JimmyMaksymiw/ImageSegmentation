@@ -45,6 +45,10 @@ Förväntad utdata:
 2: Dessutom genereras separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
 <img src="tests/test1_segmentize/test1.1/colors/colors_seg-2_size-300-to-10000.png" width="300">  <img src="tests/test1_segmentize/test1.1/colors/colors_seg-18_size-300-to-10000.png" width="300"><br><br>
 
+Den sammansatta segmenteringsbilden är i sammanhanget bättre än orginalet, men kan förbättras. De separata segmentbilderna behöver korrigerade tröskelvärden för att innehålla sammansatta objekt.
+
+
+
 ### Test 1.2: Segmentering med tröskelvärde (forts.)
 Detta test är en förlängning av Test 1.1 och utförs därför på samma vis fast med annat tröskelvärde och storlek på segment.
 
@@ -57,6 +61,10 @@ Detta test är en förlängning av Test 1.1 och utförs därför på samma vis f
 1: Segmentering <br><img src="tests/test1_segmentize/test1.2/colors_segmentize_thres-120.png" width="400"><br><br>
 2: Separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
 <img src="tests/test1_segmentize/test1.2/colors/colors_seg-0_size-2000-to-8000.png" width="300">  <img src="tests/test1_segmentize/test1.2/colors/colors_seg-18_size-2000-to-8000.png" width="300"><br><br>
+
+Mycket bättre resultat än i 1.2, men vi är inte helt nöjda med det mörka partiet i hörnet upp till vänster.
+
+
 
 ### Test 1.3: Segmentering med tröskelvärde (forts.)
 Detta test är en förlängning av Test 1.1 och utförs därför på samma vis fast med annat tröskelvärde och storlek på segment.
