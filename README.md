@@ -21,7 +21,7 @@ Detta program är konstruerat i syfte att påöka våra kunskaper om hur man man
 ## Testfall
 
 ### Test 1.1: Segmentering med tröskelvärde
-Målet med detta test är att se hur tydligt vi kan urskilja enskilda objekt från dess omgivning. Metoden skapar segment genom att gå igenom input-bildens alla pixlar för att sedan jämföra deras attribut med intilliggande pixlar. En grannpixel adderas till ett segment om dess färgvärden är inom det utsatta intervallet (segThres).
+Målet med detta test är att se hur tydligt vi kan urskilja enskilda objekt från dess omgivning. Metoden skapar segment genom att gå igenom input-bildens alla pixlar för att sedan jämföra deras attribut med intilliggande grannar. En grannpixel adderas till ett segment om dess färgvärden är inom det utsatta intervallet (segThres).
 
 De tröskelvärden som behöver sättas är:
 * segThres: Hur stor skillnad det får vara i färgvärden inom samma segment
@@ -71,6 +71,9 @@ Detta test är en förlängning av Test 1.1 och utförs därför på samma vis f
 2: Separata bilder för varje segment (enskilda glödlampor i detta fall). Två exempel: <br>
 <img src="tests/test1_segmentize/test1.3/colors/colors_seg-9_size-1000-to-6000.png" width="300">  <img src="tests/test1_segmentize/test1.3/colors/colors_seg-19_size-1000-to-6000.png" width="300"><br><br>
 
+Med dessa tröskelvärden är vi nöjda med resultatet och går därför vidare till nästa test.
+
+
 
 ### Test 2: Gråskala och Gaussian Blur
 Här testar vi omvandlingen till gråskala och appliceringen av Gaussian Blur.
@@ -118,6 +121,8 @@ Förväntad utdata:
 2: Segmentering<br>
 <img src="tests/test3_sobel/test3.1/castle_sobel-100_segmentize_thres-80.png" width="300"><br><br>
 
+Bilden innehåller fortfarande en stor mängd brus och överflödig information som inte tillhör några betydelsefulla konturer. Vi fortsätter därför i nästa test med förfinade tröskelvärden.
+
 
 
 ### Test 3.2: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
@@ -132,6 +137,8 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 <img src="tests/test3_sobel/test3.2/castle_sobel-65.png" width="300"><br><br>
 2: Segmentering<br>
 <img src="tests/test3_sobel/test3.2/castle_sobel-65_segmentize_thres-100.png" width="300"><br><br>
+
+Resultatet är nu bättre - en stor del av buskaget i bildens nedre region är borta. Vi är dock ännu inte helt nöjda och korrigerar därför tröskelvärdena ännu en gång.
 
 
 
@@ -148,10 +155,13 @@ Detta test är en förlängning av Test 3.1 och utförs därför på samma vis f
 2: Segmentering<br>
 <img src="tests/test3_sobel/test3.3/castle_sobel-20_segmentize_thres-130.png" width="300"><br><br>
 
+Vi är nu nöjda med resultatet då bilden efter Sobel-filtret och segmentering visar tydliga vita konturer mot en relativt helsvart bakgrund.
+
 
 
 ### Test 4.1: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
-Med detta test vill vi visa på att lämpliga tröskelvärden för en bild inte nödvändigtvis fungerar för en annan. 
+Med detta test vill vi visa på att lämpliga tröskelvärden för en bild inte nödvändigtvis fungerar för en annan.
+Vi använder här samma tröskelvärden som fungerade utmärkt i föregående test (3.3).
 
 ##### Indata
 * Bild: Denna bild är förbehandlad med gråskala och Gaussian Blur<br>
@@ -164,6 +174,10 @@ Med detta test vill vi visa på att lämpliga tröskelvärden för en bild inte 
 <img src="tests/test4_sobel/test4.1/orange_flower_sobel-20.png" width="300"><br><br>
 2: Segmentering<br>
 <img src="tests/test4_sobel/test4.1/orange_flower_sobel-20_segmentize_thres-130.png" width="300"><br><br>
+
+Med detta svaga resultat så korrigerar vi successivt trösklarna i nästkommande tester.
+
+
 
 ### Test 4.2: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
 Detta test är en förlängning av Test 4.1 och utförs därför på samma vis fast med andra tröskelvärden för att få ett bättre resultat.
@@ -178,6 +192,8 @@ Detta test är en förlängning av Test 4.1 och utförs därför på samma vis f
 2: Segmentering<br>
 <img src="tests/test4_sobel/test4.2/orange_flower_sobel-100_segmentize_thres-70.png" width="300"><br><br>
 
+
+
 ### Test 4.3: Konturdetektering med Sobelkärna och förfining genom segmentering (forts.)
 Detta test är en förlängning av Test 4.1 och utförs därför på samma vis fast med andra tröskelvärden för att få ett bättre resultat.
 
@@ -190,6 +206,9 @@ Detta test är en förlängning av Test 4.1 och utförs därför på samma vis f
 <img src="tests/test4_sobel/test4.3/orange_flower_sobel-110.png" width="300"><br><br>
 2: Segmentering<br>
 <img src="tests/test4_sobel/test4.3/orange_flower_sobel-110_segmentize_thres-30.png" width="300"><br><br>
+
+Blommans konturer är nu betydligt lättare att urskilja än de som resultatet av test 4.1 innehöll.
+
 
 
 ## Slutsats
