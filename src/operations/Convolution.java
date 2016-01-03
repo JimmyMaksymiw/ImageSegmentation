@@ -4,7 +4,7 @@ import utils.Image;
 import utils.Pixel;
 
 /**
- * This class i used to apply a kernel on to a image. It iterate through the image and convolve the provided kernel on the image.
+ * This class is used to apply a kernel on to an image. It iterate through the image and convolves the provided kernel on the image.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Convolution {

@@ -7,7 +7,7 @@ import utils.Image;
 import utils.Pixel;
 
 /**
- * This class is used to create a new Image-object with random colors at random pixels.
+ * This class is used to create a new Image object with random colors at random pixels.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class CreateImage {

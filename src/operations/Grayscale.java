@@ -4,15 +4,15 @@ import utils.Image;
 import utils.Pixel;
 
 /**
- * This class is used to transform a image to grayscale.
+ * This class is used to transform an image to grayscale.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Grayscale {
 
     /**
-     * Apply the grayscale to the provided image.
+     * Applies grayscale to the provided image.
      * @param image The image grayscale should be applied to.
-     * @return The new image with in grayscale.
+     * @return Grayscale version of the original image.
      */
     public static Image applyGrayscale(Image image) {
         Pixel[][] pixels = image.getPixels();

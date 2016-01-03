@@ -9,7 +9,7 @@ import utils.Image;
 public class MotionBlur {
 
     /**
-     * Apply the motion blur filter to the provided image.
+     * Applies the motion blur filter to the provided image.
      * @param image The image motion blur filter should be applied to.
      * @return The new image with the motion blur filter applied to it.
      */

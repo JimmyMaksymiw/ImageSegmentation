@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import utils.Image;
 
 /**
- * This class represent a the simplest method of image segmentation with a threshold value.
+ * This class represent the most basic method of image segmentation with a threshold value.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class SegmentizeWithThreshold {
@@ -22,7 +22,7 @@ public class SegmentizeWithThreshold {
     private int segMax;
 
     /**
-     * Class that represent a candidate pixels with x and y value.
+     * Pixels that is a candidate of belonging to a segment.
      */
     private class Candidate {
         int x;
@@ -153,11 +153,12 @@ public class SegmentizeWithThreshold {
             }
         }
 
-        // Save segment image if save is on and if segment fulfills size requirement
-        if (saveSegments && innerCounter >= segMin && innerCounter <= segMax) {
+        // Save segment image if save is enabled and if segment fulfills size requirements
+        if (saveSegments && innerCounter >= segMin && innerCounter <= segMax && seg != null) {
             // Create segment folder
-            seg.saveImage(image.getFilePath() + "/" + seg.getFileName(), seg.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" +
-                    segMax);
+            seg.saveImage(
+                    image.getFilePath() + "/" + seg.getFileName(),                                       // Folder
+                    seg.getFileName() + "_seg-" + segCounter++ + "_size-" + segMin + "-to-" + segMax);   // File name
         }
     }
 }

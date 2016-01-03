@@ -4,15 +4,15 @@ import utils.Image;
 import utils.Pixel;
 
 /**
- * This class represent a Sobel filter used for edge detection in a image.
+ * This class represent a Sobel filter used for edge detection in an image.
  * @author Jimmy Maksymiw & Kalle Bornemark
  */
 public class Sobel {
 
     /**
      * Apply the Sobel filter to the provided image.
-     * @param image The image Soble filter should be applied to.
-     * @param THRESHOLD The threshold to refine the edges.
+     * @param image The image Sobel filter should be applied to.
+     * @param THRESHOLD Threshold that determines the refinement of edges.
      * @return The new image with the Sobel filter applied to it.
      */
     public static Image applySobel(Image image, final int THRESHOLD) {
